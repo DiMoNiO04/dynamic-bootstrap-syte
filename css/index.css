@@ -309,3 +309,29 @@ header ul li ul li a{
 	padding-top: 20px;
 }
 /*---------Footer end------------*/
+
+
+
+/*---------Single post start-------*/
+.single__post{
+	margin-bottom: 30px;
+}
+
+.single__post .info{
+	margin: 20px 0;
+}
+
+.single__post .info i{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.single__post a{
+	text-decoration: underline;
+}
+
+.single__post a:hover{
+	text-decoration: underline;
+	color: #008484;
+}
+/*--------Single post end----------*/
