@@ -12,7 +12,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
@@ -54,7 +54,7 @@
 
 				<div class="single__post row">
 					<div class="img col-12">
-						<img src="./images/image_1.png" alt="image_1" class="img-thumbnail">
+						<img src="./assets/images/image_1.png" alt="image_1" class="img-thumbnail">
 					</div>
 					<div class="info">
 						<i class="far fa-user">Имя автора</i>
@@ -153,7 +153,7 @@
 				<div class="footer-section contact-form col-md-4 col-12">
 					<h3>Контакты</h3>
 					<br>
-					<form action="index.htmk" method="post">
+					<form action="index.php" method="post">
 						<input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
 						<textarea name="message" rows="4" class="text-input contact-input"
 							placeholder="Your message..."></textarea>

@@ -12,7 +12,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
@@ -50,7 +50,7 @@
 
 	<!--Form start-->
 	<div class="container reg-form">
-		<form class="row justify-content-center" method="post" action="reg.html">
+		<form class="row justify-content-center" method="post" action="reg.php">
 			<h2>Форма регистрации</h2>
 			<div class="mb-3 col-12 col-md-4">
 				<label for="formGroupExampleInput" class="form-label">Ваш логин</label>
@@ -75,7 +75,7 @@
 			 <div class="w-100"></div>
 			 <div class="mb-3 col-12 col-md-4">
 				<button type="button" class="btn btn-secondary">Зарегистрироваться</button>
-				<a href="aut.html">Войти</a>
+				<a href="aut.php">Войти</a>
 			 </div>
 		 </form>
 	</div>
@@ -118,7 +118,7 @@
 				<div class="footer-section contact-form col-md-4 col-12">
 					<h3>Контакты</h3>
 					<br>
-					<form action="index.htmk" method="post">
+					<form action="index.php" method="post">
 						<input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
 						<textarea name="message" rows="4" class="text-input contact-input" placeholder="Your message..."></textarea>
 						<button type="submit" class="btn btn-big contact-btn">

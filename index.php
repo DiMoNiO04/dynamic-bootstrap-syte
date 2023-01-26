@@ -12,7 +12,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
@@ -54,19 +54,19 @@
 		<div id="carouselExampleCaptions" class="carousel slide">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="./images/image_1.png" class="d-block w-100" alt="image_1">
+					<img src="./assets/images/image_1.png" class="d-block w-100" alt="image_1">
 					<div class="carousel-caption-hack carousel-caption d-none d-md-block">
 						<h5><a href="">First slide label</a></h5>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./images/image_2.png" class="d-block w-100" alt="image_2">
+					<img src="./assets/images/image_2.png" class="d-block w-100" alt="image_2">
 					<div class="carousel-caption-hack carousel-caption d-none d-md-block">
 						<h5>Second slide label</h5>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./images/image_3.png" class="d-block w-100" alt="image_3">
+					<img src="./assets/images/image_3.png" class="d-block w-100" alt="image_3">
 					<div class="carousel-caption-hack carousel-caption d-none d-md-block">
 						<h5>Third slide label</h5>
 					</div>
@@ -94,7 +94,7 @@
 				<h2>Последние публикации</h2>
 				<div class="post row">
 					<div class="img col-12 col-md-4">
-						<img src="./images/image_small.png" alt="image_3" class="img-thumbnail">
+						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
 					</div>
 					<div class="post_text col-12 col-md-8">
 						<h3>
@@ -111,7 +111,7 @@
 
 				<div class="post row">
 					<div class="img col-12 col-md-4">
-						<img src="./images/image_small.png" alt="image_3" class="img-thumbnail">
+						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
 					</div>
 					<div class="post_text col-12 col-md-8">
 						<h3>
@@ -128,7 +128,7 @@
 
 				<div class="post row">
 					<div class="img col-12 col-md-4">
-						<img src="./images/image_small.png" alt="image_3" class="img-thumbnail">
+						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
 					</div>
 					<div class="post_text col-12 col-md-8">
 						<h3>
@@ -145,7 +145,7 @@
 
 				<div class="post row">
 					<div class="img col-12 col-md-4">
-						<img src="./images/image_small.png" alt="image_3" class="img-thumbnail">
+						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
 					</div>
 					<div class="post_text col-12 col-md-8">
 						<h3>
@@ -221,7 +221,7 @@
 				<div class="footer-section contact-form col-md-4 col-12">
 					<h3>Контакты</h3>
 					<br>
-					<form action="index.htmk" method="post">
+					<form action="index.php" method="post">
 						<input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
 						<textarea name="message" rows="4" class="text-input contact-input" placeholder="Your message..."></textarea>
 						<button type="submit" class="btn btn-big contact-btn">
