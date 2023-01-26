@@ -78,5 +78,39 @@ function selectOne($table, $params = []){
 }
 
 
-//tt(selectAll('users', $params));
-//tt(selectOne('users'));
+//Запись в таблицу БД
+function insert($table, $params){
+	global $pdo;   //Глобальная переменная
+
+	$i = 0;
+	$coll = '';
+	$mask = '';
+	foreach ($params as $key => $value){
+		if($i === 0){
+			$coll = $coll . "$key";
+			$mask = $mask . "'" . "$value" . "'";
+		}else{
+			$coll = $coll . ", $key";
+			$mask = $mask . ", '" . "$value" . "'";
+		}
+		$i++;
+	}
+
+	$sql = "INSERT INTO $table ($coll) VALUES ($mask)"; //Запрос с именнем таблицы
+	$query = $pdo->prepare($sql);
+	$query->execute($params);
+	dbCheckError($query);
+}
+
+
+
+$arrData = [
+	'admin' => '0',
+	'username' => 'DDDR',
+	'email' => 'regy233@re.ru',
+	'password' => '121212',
+	'created' => '2023-01-25 19:21:43'
+];
+
+
+insert('users', $arrData);
