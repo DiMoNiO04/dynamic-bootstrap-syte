@@ -359,4 +359,10 @@ header ul li ul li a{
 	margin-left: 55px;
 	transition: all 0.3s;
 }
+
+form div.err p{
+	color: red;
+	font-style: Italic;
+	font-size: 0.8rem;
+}
 /*--------Forms end--------------*/

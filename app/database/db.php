@@ -100,6 +100,7 @@ function insert($table, $params){
 	$query = $pdo->prepare($sql);
 	$query->execute($params);
 	dbCheckError($query);
+	return $pdo->lastInsertId();
 }
 
 
