@@ -103,14 +103,33 @@ function insert($table, $params){
 }
 
 
+//Обновление строки в таблице
+function update($table, $id, $params){
+	global $pdo;   //Глобальная переменная
 
-$arrData = [
-	'admin' => '0',
-	'username' => 'DDDR',
-	'email' => 'regy233@re.ru',
-	'password' => '121212',
-	'created' => '2023-01-25 19:21:43'
-];
+	$i = 0;
+	$str = '';
+	foreach ($params as $key => $value){
+		if($i === 0){
+			$str = $str . $key . " = '" . $value . "'";
+		}else{
+			$str = $str . ", " . $key .  "= '" . $value . "'";
+		}
+		$i++;
+	}
+
+	$sql = "UPDATE $table SET $str WHERE id_user = $id"; //Запрос с именнем таблицы
+	$query = $pdo->prepare($sql);
+	$query->execute($params);
+	dbCheckError($query);
+}
 
 
-insert('users', $arrData);
+//Удаление строки в таблице
+function delete($table, $id){
+	global $pdo;   //Глобальная переменная
+	$sql = "DELETE FROM $table WHERE id_user = $id"; //Запрос с именнем таблицы
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+}
