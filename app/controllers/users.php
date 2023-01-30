@@ -12,8 +12,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$passF = trim($_POST['pass-first']);
 	$passS = trim($_POST['pass-second']);
 
-	
-
 	if($login === '' || $email === '' || $passF === ''){
 		$errMsg = "Не все поля заполнены";
 	}elseif(mb_strlen($login, 'UTF8') < 2){
@@ -33,10 +31,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 				'password' => $pass
 			];
 			$id = insert('users', $post);
-			$errMsg = "Пользователь " . "<strong>" . $login . "</strong>" . " успешно зарегистрирован"; 
+			$user = selectOne('users', ['id_user' => $id]);
+
+			$_SESSION['id_user'] = $user['id_user'];
+			$_SESSION['login'] = $user['username'];
+			$_SESSION['admin'] = $user['admin'];
+
+			if($_SESSION['admin']){
+				header('location: ' . BASE_URL . admin/admin.php);
+			}else{
+				header('location: ' . BASE_URL );
+			}
 		}	
 	}
-	//	$last_row = selectOne('users', ['id_user' => $id]);
 }else{
 	$login = '';
 	$email = '';
