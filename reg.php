@@ -39,7 +39,7 @@
 			 <div class="w-100"></div>
 			<div class="mb-3 col-12 col-md-4">
 			  <label for="exampleInputEmail1" class="form-label">Email</label>
-			  <input name="mail" value="<?=$email?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			  <input name="mail" value="<?=$email?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите ваш email...">
 			  <div id="emailHelp" class="form-text">Ваш email адрес не будет использован для спама!</div>
 			</div>
 			<div class="w-100"></div>
@@ -54,7 +54,7 @@
 			 </div>
 			 <div class="w-100"></div>
 			 <div class="mb-3 col-12 col-md-4">
-				<button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
+				<button type="submit" name="button-reg" class="btn btn-secondary">Зарегистрироваться</button>
 				<a href="aut.php">Войти</a>
 			 </div>
 		 </form>
