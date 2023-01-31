@@ -83,23 +83,23 @@ function selectOne($table, $params = []){
 
 //Запись в таблицу БД
 function insert($table, $params){
-	global $pdo;   //Глобальная переменная
-
+	global $pdo;
 	$i = 0;
 	$coll = '';
 	$mask = '';
-	foreach ($params as $key => $value){
-		if($i === 0){
-			$coll = $coll . "$key";
-			$mask = $mask . "'" . "$value" . "'";
-		}else{
-			$coll = $coll . ", $key";
-			$mask = $mask . ", '" . "$value" . "'";
-		}
-		$i++;
+	foreach ($params as $key => $value) {
+		 if ($i === 0){
+			  $coll = $coll . "$key";
+			  $mask = $mask . "'" ."$value" . "'";
+		 }else {
+			  $coll = $coll . ", $key";
+			  $mask = $mask . ", '" . "$value" . "'";
+		 }
+		 $i++;
 	}
 
-	$sql = "INSERT INTO $table ($coll) VALUES ($mask)"; //Запрос с именнем таблицы
+	$sql = "INSERT INTO $table ($coll) VALUES ($mask)";
+
 	$query = $pdo->prepare($sql);
 	$query->execute($params);
 	dbCheckError($query);

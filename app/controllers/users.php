@@ -4,7 +4,7 @@ include("app/database/db.php");
 
 
 function userAuth($user){
-    $_SESSION['id_user'] = $user['id_user'];
+    $_SESSION['id'] = $user['id'];
     $_SESSION['login'] = $user['username'];
     $_SESSION['admin'] = $user['admin'];
     if($_SESSION['admin']){
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 				'password' => $pass
 			];
 			$id = insert('users', $post);
-			$user = selectOne('users', ['id_user' => $id]);
+			$user = selectOne('users', ['id' => $id]);
 			userAuth($user);
 		}	
 	}

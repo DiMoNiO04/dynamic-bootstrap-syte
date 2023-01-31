@@ -13,7 +13,7 @@
 						<li><a href="#">Услуги</a></li>
 						<li> 
 							<!--Проверка на вход-->
-							<?php if(isset($_SESSION['id_user'])): ?>
+							<?php if(isset($_SESSION['id'])): ?>
 								<a href="#">
 									<i class="fa-solid fa-user"></i>
 									<?php echo $_SESSION['login']; ?>

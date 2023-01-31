@@ -4,7 +4,7 @@
 	include("path.php"); 
 	
 	//Удаляем сессию
-	unset($_SESSION['id_user']);
+	unset($_SESSION['id']);
 	unset($_SESSION['login']);
 	unset($_SESSION['admin']);
 
