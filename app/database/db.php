@@ -10,6 +10,7 @@ function tt($value){
 	echo '<pre>';
 	print_r($value);
 	echo '</pre>';
+	exit();
 }
 
 
@@ -121,7 +122,7 @@ function update($table, $id, $params){
 		$i++;
 	}
 
-	$sql = "UPDATE $table SET $str WHERE id_user = $id"; //Запрос с именнем таблицы
+	$sql = "UPDATE $table SET $str WHERE id = $id"; //Запрос с именнем таблицы
 	$query = $pdo->prepare($sql);
 	$query->execute($params);
 	dbCheckError($query);
@@ -131,7 +132,7 @@ function update($table, $id, $params){
 //Удаление строки в таблице
 function delete($table, $id){
 	global $pdo;   //Глобальная переменная
-	$sql = "DELETE FROM $table WHERE id_user = $id"; //Запрос с именнем таблицы
+	$sql = "DELETE FROM $table WHERE id = $id"; //Запрос с именнем таблицы
 	$query = $pdo->prepare($sql);
 	$query->execute();
 	dbCheckError($query);
