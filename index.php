@@ -1,6 +1,6 @@
 <?php 
 	include("path.php");
-	include("app/database/db.php");	
+	include("app/controllers/topics.php");
 ?>
 
 <!doctype html>
@@ -138,6 +138,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="sidebar col-12 col-md-3">
 
 				<div class="section search">
@@ -150,11 +151,11 @@
 				<div class="section topics">
 					<h3>Категории</h3>
 					<ul>
-						<li><a href="#">Программирование</a></li>
-						<li><a href="#">Дизайн</a></li>
-						<li><a href="#">Визуализация</a></li>
-						<li><a href="#">Кейсы</a></li>
-						<li><a href="#">Мотивация</a></li>
+						<?php foreach($topics as $key => $topic): ?>
+							<li>
+								<a href="#"><?=$topic['name'];?></a>
+							</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
