@@ -25,26 +25,13 @@
 	<?php include("../../app/include/header-admin.php"); ?>
 
 	<div class="container">
-		<div class="row">
-			<div class="sidebar col-3">
-				<ul>
-					<li>
-						<a href="#">Записи</a>
-					</li>
-					<li>
-						<a href="#">Пользователи</a>
-					</li>
-					<li>
-						<a href="#">Категории</a>
-					</li>
-				</ul>
-			</div>
+		<?php include "../../app/include/sidebar-admin.php";?>
 
 			<div class="posts col-9">
 				<div class="button row">
-					<a href="create.html" class="col-3 btn btn-success">Создать</a>
+					<a href="<?php echo BASE_URL . "admin/users/create.php";?>" class="col-3 btn btn-success">Создать</a>
 					<span class="col-1"></span>
-					<a href="index.html" class="col-3 btn btn-warning">Управление</a>
+					<a href="<?php echo BASE_URL . "admin/users/index.php";?>" class="col-3 btn btn-warning">Редактировать</a>
 				</div>
 				<div class="row title-table">
 					<h2>Создание пользователя</h2>
@@ -61,16 +48,15 @@
 					</div>
 					<div class="col">
 						<label for="exampleInputPassword1" class="form-label">Пароль</label>
-						<input name="pass-first" type="password" class="form-control" id="exampleInputPassword1">
+						<input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль...">
 					</div>
-					<div class="col">
+					<div class="col mb-4">
 						<label for="exampleInputPassword2" class="form-label">Повторите пароль</label>
-						<input name="pass-second" type="password" class="form-control" id="exampleInputPassword2">
+						<input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="Повторите пароль...">
 					</div>
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select mb-4" aria-label="Default select example">
 						<option selected>User</option>
 						<option value="1">Admin</option>
-
 					</select>
 						<div class="col">
 							<button class="btn btn-primary" type="submit">Создать</button>
