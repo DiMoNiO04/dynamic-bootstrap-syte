@@ -1,6 +1,6 @@
 <?php 
-	session_start();
 	include "../../path.php";
+	include "../../app/controllers/posts.php";
 ?>
 
 <!doctype html>
@@ -40,27 +40,21 @@
 					<div class="col-2">Автор</div>
 					<div class="col-4">Управление</div>
 				</div>
+				<?php foreach($postsAdmin as $key => $post):?>
 				<div class="row post">
-					<div class="id col-1">1</div>
-					<div class="title col-5">Какая-то там статья</div>
-					<div class="author col-2">Админ</div>
-					<div class="red col-2"><a href="">Edit</a></div>
-					<div class="del col-2"><a href="">Delete</a></div>
+					<div class="id col-1"><?=$key + 1;?></div>
+					<div class="title col-5"><?=$post['title'];?></div>
+					<div class="author col-2"><?=$post['username'];?></div>
+					<div class="red col-1"><a href="">Edit</a></div>
+					<div class="del col-1"><a href="">Delete</a></div>
+
+					<?php if($post['status']): ?>
+						<div class="status col-2"><a href="">Unpublish</a></div>
+					<?php else: ?>
+						<div class="status col-2"><a href="">Publish</a></div>
+					<?php endif ?>
 				</div>
-				<div class="row post">
-					<div class="id col-1">1</div>
-					<div class="title col-5">Какая-то там статья</div>
-					<div class="author col-2">Админ</div>
-					<div class="red col-2"><a href="">Edit</a></div>
-					<div class="del col-2"><a href="">Delete</a></div>
-				</div>
-				<div class="row post">
-					<div class="id col-1">1</div>
-					<div class="title col-5">Какая-то там статья</div>
-					<div class="author col-2">Админ</div>
-					<div class="red col-2"><a href="">Edit</a></div>
-					<div class="del col-2"><a href="">Delete</a></div>
-				</div>
+				<?php endforeach;?>
 			</div>
 		</div>
 	</div>

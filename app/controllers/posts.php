@@ -9,6 +9,8 @@ $content = '';
 $img = '';
 $topic = '';
 $topics = selectAll('topics');
+$posts = selectAll('posts');
+$postsAdmin = selectAllFromPostsWithUsers('posts', 'users');
 
 //Код для формы создания записи
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])){
@@ -16,8 +18,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])){
 	$title = trim($_POST['title']);
 	$content = trim($_POST['content']);
 	$topic = trim($_POST['topic']);
-
-	//tt($_SESSION['id_user']);
+	$publish = isset($_POST['publish']) ? 1 : 0;
 
 	if($title === '' || $content === '' || $topic === ''){
 		$errMsg = "Не все поля заполнены!";
@@ -29,10 +30,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])){
 			 'title' => $title,
 			 'content' => $content,
 			 'img' => $_POST['img'],
-			 'status' => 1,
+			 'status' => $publish,
 			 'id_topic' => $topic
 		];
-
 		$post = insert('posts', $post);
 		$post = selectOne('posts', ['id' => $id] );
 		header('location: ' . BASE_URL . 'admin/posts/index.php');
