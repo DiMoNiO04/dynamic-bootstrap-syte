@@ -37,8 +37,8 @@
 					<h2>Обновление категории</h2>
 				</div>
 				<div class="row add-post">
-					<div class="mb-3 col-12 col-md-12 err">
-						<p><?=$errMsg?></p>
+					<div class="mb-12 col-12 col-md-12 err">
+						<?php include("../../app/helps/errorInfo.php"); ?>
 					</div>
 					<form action="edit.php" method="post">
 						<input value="<?=$id;?>" name="id" type="hidden">

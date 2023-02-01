@@ -28,8 +28,8 @@
 	<div class="container reg-form">
 		<form class="row justify-content-center" method="post" action="reg.php">
 			<h2>Форма регистрации</h2>
-			<div class="mb-3 col-12 col-md-4 err">
-				<p><?=$errMsg?></p>
+			<div class="mb-12 col-12 col-md-12 err">
+				<?php include("./app/helps/errorInfo.php"); ?>
 			</div>
 			<div class="w-100"></div>
 			<div class="mb-3 col-12 col-md-4">

@@ -276,3 +276,19 @@ header ul li ul li a{
 	margin-top: 0 !important;
 }
 /*--------Sidebar end----------*/
+
+
+
+/*-------Error msg start--------------*/
+.add-post .err{
+	padding: 1rem 0;
+	color: red;
+}
+
+.add-post .err ul{
+	list-style-type: none;
+	color: red;
+	padding-left: 10px;
+	font-weight: 500;
+}
+/*------Error msg end------------*/

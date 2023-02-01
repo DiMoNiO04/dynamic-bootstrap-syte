@@ -37,8 +37,8 @@
 					<h2>Создать категорию</h2>
 				</div>
 				<div class="row add-post">
-					<div class="mb-3 col-12 col-md-12 err">
-						<p><?=$errMsg?></p>
+				<div class="mb-12 col-12 col-md-12 err">
+						<?php include("../../app/helps/errorInfo.php"); ?>
 					</div>
 					<form action="create.php" method="post">
   						<div class="col">

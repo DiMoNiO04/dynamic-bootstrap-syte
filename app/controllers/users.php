@@ -14,7 +14,7 @@ function userAuth($user){
     }
 }
 
-$errMsg = '';
+$errMsg = [];
 
 //Код для формы регистрации
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
@@ -26,15 +26,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 	$passS = trim($_POST['pass-second']);
 
 	if($login === '' || $email === '' || $passF === ''){
-		$errMsg = "Не все поля заполнены";
+		array_push($errMsg, "Не все поля заполнены");
 	}elseif(mb_strlen($login, 'UTF8') < 2){
-		$errMsg = "Логин должен быть более двух символов";
+		array_push($errMsg, "Логин должен быть более двух символов");
 	}elseif($passS !== $passF){
-		$errMsg = 'Пароли в обеих полях должны соответствовать';
+		array_push($errMsg, 'Пароли в обеих полях должны соответствовать');
 	}else{
 		$existence = selectOne('users', ['email' => $email]);
 		if($existence['email'] === $email){
-			$errMsg = 'Пользователь с такой почтой уже зарегистрирован';
+			array_push($errMsg, 'Пользователь с такой почтой уже зарегистрирован');
 		}else{
 			$pass = password_hash($passF, PASSWORD_DEFAULT);
 			$post = [
@@ -61,13 +61,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])){
 	$pass = trim($_POST['password']);
 
 	if($email === '' || $pass === ''){
-		$errMsg = "Не все поля заполнены";
+		array_push($errMsg, "Не все поля заполнены");
 	}else{
 		$existence = selectOne('users', ['email' => $email]);
 		if($existence && password_verify($pass, $existence['password'])){
 			userAuth($existence);
 		}else{
-			$errMsg = 'Почта либо пароль введены неверно';
+			array_push($errMsg, 'Почта либо пароль введены неверно');
 		}
 	}
 }else{
