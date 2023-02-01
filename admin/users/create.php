@@ -1,6 +1,6 @@
 <?php 
-	session_start();
-	include "../../path.php";
+   include "../../path.php";
+   include "../../app/controllers/users.php";
 ?>
 
 <!doctype html>
@@ -37,6 +37,9 @@
 					<h2>Создание пользователя</h2>
 				</div>
 				<div class="row add-post">
+					<div class="mb-12 col-12 col-md-12 err">
+						<?php include("../../app/helps/errorInfo.php"); ?>
+					</div>
 					<form action="create.php" method="post">
 					<div class="col">
 						<label for="formGroupExampleInput" class="form-label">Ваш логин</label>
@@ -54,13 +57,15 @@
 						<label for="exampleInputPassword2" class="form-label">Повторите пароль</label>
 						<input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="Повторите пароль...">
 					</div>
-					<select class="form-select mb-4" aria-label="Default select example">
-						<option selected>User</option>
-						<option value="1">Admin</option>
-					</select>
-						<div class="col">
-							<button class="btn btn-primary" type="submit">Создать</button>
-						</div>
+					<div class="form-check mb-4">
+						<input value="1" name="admin" class="form-check-input" type="checkbox" id="flexCheckChecked">
+						<label class="form-check-label" for="flexCheckChecked">
+							Admin
+						</label>
+					</div>
+					<div class="col">
+						<button name="create-user" class="btn btn-primary" type="submit">Создать</button>
+					</div>
 					</form>
 				</div>
 			</div>

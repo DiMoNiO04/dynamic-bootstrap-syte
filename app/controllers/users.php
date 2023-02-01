@@ -1,6 +1,7 @@
 <?php
 
-include("app/database/db.php"); 
+
+include SITE_ROOT . "/app/database/db.php";
 
 
 function userAuth($user){
@@ -10,7 +11,7 @@ function userAuth($user){
     if($_SESSION['admin']){
 		header('location: ' . BASE_URL . "admin/posts/index.php");
     }else{
-        header('location: ' . BASE_URL);
+      header('location: ' . BASE_URL);
     }
 }
 
@@ -71,6 +72,47 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])){
 		}
 	}
 }else{
+	$email = '';
+}
+
+
+//Код добавления пользователя в админке
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-user'])){
+
+	$admin = 0;
+	$login = trim($_POST['login']);
+	$email = trim($_POST['mail']);
+	$passF = trim($_POST['pass-first']);
+	$passS = trim($_POST['pass-second']);
+
+	if($login === '' || $email === '' || $passF === ''){
+		array_push($errMsg, "Не все поля заполнены");
+	}elseif(mb_strlen($login, 'UTF8') < 2){
+		array_push($errMsg, "Логин должен быть более двух символов");
+	}elseif($passS !== $passF){
+		array_push($errMsg, 'Пароли в обеих полях должны соответствовать');
+	}else{
+		$existence = selectOne('users', ['email' => $email]);
+		if($existence['email'] === $email){
+			array_push($errMsg, 'Пользователь с такой почтой уже зарегистрирован');
+		}else{
+			$pass = password_hash($passF, PASSWORD_DEFAULT);
+
+			if(isset($_POST['admin'])) $admin = 1;
+
+			$user = [
+				'admin' => $admin,
+				'username' => $login,
+				'email' => $email,
+				'password' => $pass
+			];
+			$id = insert('users', $user);
+			$user = selectOne('users', ['id' => $id]);
+			userAuth($user);
+		}	
+	}
+}else{
+	$login = '';
 	$email = '';
 }
 ?>
