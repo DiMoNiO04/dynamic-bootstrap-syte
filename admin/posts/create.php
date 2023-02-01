@@ -37,7 +37,7 @@
 					<h2>Добавление записи</h2>
 				</div>
 				<div class="row add-post">
-					<form action="create.php" method="post">
+					<form action="create.php" method="post" enctype="multipart/form-data">
   						<div class="col mb-4">
     						<input name="title" type="text" class="form-control" placeholder="Title..." aria-label="Название статьи">
  						</div>
