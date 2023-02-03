@@ -1,6 +1,8 @@
 <?php 
 	include("path.php");
 	include("app/controllers/topics.php");
+	
+	$posts = selectAllFromPostsWithUsersOnIndex('posts', 'users');
 ?>
 
 <!doctype html>
@@ -70,73 +72,22 @@
 		<div class="content row">
 			<div class="main-content col-12 col-md-9">
 				<h2>Последние публикации</h2>
-				<div class="post row">
-					<div class="img col-12 col-md-4">
-						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
-					</div>
-					<div class="post_text col-12 col-md-8">
-						<h3>
-							<a href="#">Прикольная статья на тему динамического сайта</a>
-						</h3>
-						<i class="far fa-user">Имя автора</i>
-						<i class="far fa-calendar">Mar 11, 2022</i>
-						<p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint est maxime ipsum
-							aspernatur aliquid? Perferendis, veritatis. Quidem ullam omnis quo, sunt id quas illum ad sapiente
-							recusandae perferendis delectus saepe.
-						</p>
-					</div>
-				</div>
 
-				<div class="post row">
-					<div class="img col-12 col-md-4">
-						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
+				<?php foreach ($posts as $post): ?>
+					<div class="post row">
+						<div class="img col-12 col-md-4">
+							<img src="<?=BASE_URL . 'assets/images/posts/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
+						</div>
+						<div class="post_text col-12 col-md-8">
+							<h3>
+								<a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a>
+							</h3>
+							<i class="far fa-user"> <?= $post['id_user']?></i>
+							<i class="far fa-calendar"> <?=$post['created_date'] ?></i>
+							<p class="preview-text"><?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?></p>
+						</div>
 					</div>
-					<div class="post_text col-12 col-md-8">
-						<h3>
-							<a href="#">Прикольная статья на тему динамического сайта</a>
-						</h3>
-						<i class="far fa-user">Имя автора</i>
-						<i class="far fa-calendar">Mar 11, 2022</i>
-						<p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint est maxime ipsum
-							aspernatur aliquid? Perferendis, veritatis. Quidem ullam omnis quo, sunt id quas illum ad sapiente
-							recusandae perferendis delectus saepe.
-						</p>
-					</div>
-				</div>
-
-				<div class="post row">
-					<div class="img col-12 col-md-4">
-						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
-					</div>
-					<div class="post_text col-12 col-md-8">
-						<h3>
-							<a href="#">Прикольная статья на тему динамического сайта</a>
-						</h3>
-						<i class="far fa-user">Имя автора</i>
-						<i class="far fa-calendar">Mar 11, 2022</i>
-						<p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint est maxime ipsum
-							aspernatur aliquid? Perferendis, veritatis. Quidem ullam omnis quo, sunt id quas illum ad sapiente
-							recusandae perferendis delectus saepe.
-						</p>
-					</div>
-				</div>
-
-				<div class="post row">
-					<div class="img col-12 col-md-4">
-						<img src="./assets/images/image_small.png" alt="image_3" class="img-thumbnail">
-					</div>
-					<div class="post_text col-12 col-md-8">
-						<h3>
-							<a href="#">Прикольная статья на тему динамического сайта</a>
-						</h3>
-						<i class="far fa-user">Имя автора</i>
-						<i class="far fa-calendar">Mar 11, 2022</i>
-						<p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint est maxime ipsum
-							aspernatur aliquid? Perferendis, veritatis. Quidem ullam omnis quo, sunt id quas illum ad sapiente
-							recusandae perferendis delectus saepe.
-						</p>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 
 			<div class="sidebar col-12 col-md-3">
