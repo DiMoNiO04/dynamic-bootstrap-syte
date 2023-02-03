@@ -34,26 +34,29 @@
 					<a href="<?php echo BASE_URL . "admin/users/index.php";?>" class="col-3 btn btn-warning">Редактировать</a>
 				</div>
 				<div class="row title-table">
-					<h2>Управление пользователями</h2>
+					<h2>Пользователи</h2>
 					<div class="col-1">ID</div>
-					<div class="col-5">Логин</div>
+					<div class="col-2">Логин</div>
+					<div class="col-3">Email</div>
 					<div class="col-2">Роль</div>
 					<div class="col-4">Управление</div>
 				</div>
+				<?php foreach($users as $key => $user): ?>
 				<div class="row post">
-					<div class="id col-1">1</div>
-					<div class="title col-5">Dima2004</div>
-					<div class="author col-2">Admin</div>
-					<div class="red col-2"><a href="">Edit</a></div>
-					<div class="del col-2"><a href="">Delete</a></div>
+					<div class="col-1"><?=$user['id']; ?></div>
+					<div class="col-2"><?=$user['username']; ?></div>
+					<div class="col-3"><?=$user['email']; ?></div>
+
+					<?php if($user['admin'] == 1): ?>
+						<div class="col-2">Admin</div>
+					<?php else: ?>
+						<div class="col-2">User</div>
+					<? endif ?>
+
+					<div class="red col-2"><a href="edit.php?edit_id=<?=$user['id']?>">Edit</a></div>
+					<div class="del col-2"><a href="index.php?delete_id=<?=$user['id']?>">Delete</a></div>
 				</div>
-				<div class="row post">
-					<div class="id col-1">2</div>
-					<div class="title col-5">Sergey2020</div>
-					<div class="author col-2">User</div>
-					<div class="red col-2"><a href="">Edit</a></div>
-					<div class="del col-2"><a href="">Delete</a></div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>

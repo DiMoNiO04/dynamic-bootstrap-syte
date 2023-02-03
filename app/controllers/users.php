@@ -16,6 +16,7 @@ function userAuth($user){
 }
 
 $errMsg = [];
+$users = selectAll('users');
 
 //Код для формы регистрации
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
@@ -114,5 +115,56 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-user'])){
 }else{
 	$login = '';
 	$email = '';
+}
+
+
+
+//Редактирование пользователя через админку
+if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['edit_id'])){
+	$user = selectOne('users', ['id' => $_GET['edit_id']]);
+	$id = $user['id'];
+	$admin = $user['admin'];
+	$username = $user['username'];
+	$email = $user['email'];
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit-user'])){
+	$id = $_POST['id'];
+	$email = trim($_POST['mail']);
+	$login = trim($_POST['login']);
+	$passF = trim($_POST['pass-first']);
+	$passS = trim($_POST['pass-second']);
+	$admin = isset($_POST['admin']) ? 1 : 0;
+
+	if($login === ''){
+		array_push($errMsg, "Не все поля заполнены!");
+  	}elseif (mb_strlen($login, 'UTF8') < 2){
+		array_push($errMsg, "Название статьи должно быть более двух символов");
+  	}elseif($passS !== $passF){
+		array_push($errMsg, 'Пароли в обеих полях должны соответствовать');
+	}else{
+		
+		$pass = password_hash($passF, PASSWORD_DEFAULT);
+
+		if(isset($_POST['admin'])) $admin = 1;
+
+		$user = [
+			'admin' => $admin,
+			'username' => $login,
+			'email' => $email,
+			'password' => $pass
+		];
+
+		$user = update('users', $id, $user);
+		header('location: ' . BASE_URL . 'admin/users/index.php');
+  }
+}
+
+
+//Код удаления пользователя в админке
+if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete_id'])){
+	$id = $_GET['delete_id'];
+	delete('users', $id);
+	header('location: ' . BASE_URL . 'admin/users/index.php');
 }
 ?>
