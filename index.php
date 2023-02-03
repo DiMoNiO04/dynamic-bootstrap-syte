@@ -91,8 +91,8 @@
 
 				<div class="section search">
 					<h3>Поиск</h3>
-					<form action="/" method="post">
-						<input type="text" name="search-term" class="text-input" placeholder="Введите...">
+					<form action="search.php" method="post">
+						<input type="text" name="search-term" class="text-input" placeholder="Введите искомое слово...">
 					</form>
 				</div>
 
