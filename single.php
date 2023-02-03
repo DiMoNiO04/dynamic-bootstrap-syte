@@ -1,6 +1,8 @@
 <?php 
 	include("path.php"); 
 	include(SITE_ROOT . "/app/database/db.php");
+
+	$post = selectPostFromPostsWithUsersOnSingle('posts', 'users',  $_GET['post']);
 ?>
 
 <!doctype html>
@@ -28,34 +30,18 @@
 	<div class="container">
 		<div class="content row">
 			<div class="main-content col-12 col-md-9">
-				<h2>Заголовок конкретной статьи</h2>
+				<h2><?=$post['title']; ?></h2>
 
 				<div class="single__post row">
 					<div class="img col-12">
-						<img src="./assets/images/image_1.png" alt="image_1" class="img-thumbnail">
+						<img src="<?=BASE_URL . 'assets/images/posts/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
 					</div>
 					<div class="info">
-						<i class="far fa-user">Имя автора</i>
-						<i class="far fa-calendar">Mar 11, 2022</i>
+						<i class="far fa-user"> <?= $post['username']?></i>
+						<i class="far fa-calendar"> <?=$post['created_date'] ?></i>
 					</div>
 					<div class="single__post_text col-12">
-						<h3>Заголовок третьего уровня</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores facere, voluptatum
-							tenetur quisquam animi placeat id inventore itaque voluptatibus excepturi ratione incidunt dolorum
-							explicabo voluptates iure quasi eius pariatur?</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores facere, voluptatum
-							tenetur quisquam animi placeat id inventore itaque voluptatibus excepturi ratione incidunt dolorum
-							explicabo voluptates iure quasi eius pariatur?</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores facere, voluptatum
-							tenetur quisquam animi placeat id inventore itaque voluptatibus excepturi ratione incidunt dolorum
-							explicabo voluptates iure quasi eius pariatur?</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores facere, voluptatum
-							tenetur quisquam animi placeat id inventore itaque voluptatibus excepturi ratione incidunt dolorum
-							explicabo voluptates iure quasi eius pariatur?</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores facere, voluptatum
-							tenetur quisquam animi placeat id inventore itaque voluptatibus excepturi ratione incidunt dolorum
-							explicabo voluptates iure quasi eius pariatur?</p>
-
+						<?= $post['content']?>
 					</div>
 				</div>
 
