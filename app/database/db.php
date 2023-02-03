@@ -165,3 +165,14 @@ function selectAllFromPostsWithUsersOnIndex($table1, $table2){
 	dbCheckError($query);
 	return $query->fetchAll();
 }
+
+
+//Выборка постов в слайдшоу на главную
+function selectTopTopicsFromPostsOnIndex($table){
+	global $pdo;
+	$sql = "SELECT * FROM $table WHERE id_topic=7; ";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}
