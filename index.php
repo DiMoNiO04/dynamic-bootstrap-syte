@@ -101,7 +101,7 @@
 					<ul>
 						<?php foreach($topics as $key => $topic): ?>
 							<li>
-								<a href="#"><?=$topic['name'];?></a>
+								<a href="<?=BASE_URL . 'category.php?id=' . $topic['id'];?>"><?=$topic['name'];?></a>
 							</li>
 						<?php endforeach; ?>
 					</ul>
