@@ -1,5 +1,8 @@
 <?php
 
+include_once SITE_ROOT . "/app/database/db.php";
+
+$commentsForAdmin = selectAll('comments');
 $page = $_GET['post'];
 $email = '';
 $comment = '';
@@ -38,5 +41,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['goComment'])){
 	$comment = '';
 	$comments = selectAll('comments', ['page' => $page, 'status' => 1 ] );
 }
+
+
+
+//Удаление комментария
+if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete_id'])){
+	$id = $_GET['delete_id'];
+	delete('comments', $id);
+	header('location: ' . BASE_URL . 'admin/comments/index.php');
+}
+
+
+//Опубликова или неопубликован комментарий
+if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pub_id'])){
+	$id = $_GET['pub_id'];
+	$publish = $_GET['publish'];
+
+	$postId = update('comments', $id, ['status' => $publish]);
+	header('location: ' . BASE_URL . "admin/comments/index.php");
+	exit();
+}
+
 
 ?>
