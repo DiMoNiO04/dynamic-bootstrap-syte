@@ -43,6 +43,10 @@
 					<div class="single__post_text col-12">
 						<?= $post['content']?>
 					</div>
+
+					<!--Подключаем html-блок с комментариями-->
+					<?php include("app/include/comments.php"); ?>
+
 				</div>
 
 			</div>
